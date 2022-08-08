@@ -5,6 +5,7 @@ class CreateDespesas < ActiveRecord::Migration[6.0]
       t.date :data_emissao
       t.decimal :valor_liquido
       t.references :politico, foreign_key: true
+      t.string :url_documento
 
       t.timestamps
     end

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_08_06_221037) do
     t.date "data_emissao"
     t.decimal "valor_liquido"
     t.integer "politico_id"
+    t.string "url_documento"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["politico_id"], name: "index_despesas_on_politico_id"
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2022_08_06_221037) do
     t.string "nome"
     t.string "sguf"
     t.string "sgpartido"
+    t.string "id_cadastro"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

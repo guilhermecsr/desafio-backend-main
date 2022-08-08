@@ -4,6 +4,7 @@ class CreatePoliticos < ActiveRecord::Migration[6.0]
       t.string :nome
       t.string :sguf
       t.string :sgpartido
+      t.string :id_cadastro
 
       t.timestamps
     end
