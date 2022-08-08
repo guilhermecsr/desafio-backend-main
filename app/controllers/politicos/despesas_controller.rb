@@ -1,0 +1,2 @@
+class DespesasController < ApplicationController
+end

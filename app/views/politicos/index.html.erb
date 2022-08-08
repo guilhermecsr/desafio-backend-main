@@ -1,0 +1,15 @@
+<table>
+  Politicos cadastrados:
+  <% @politicos.each do |politico|%>
+    <tr>
+      <th>Nome: </th>
+<!--      <th>Partido: </th>-->
+      <th>valor: </th>
+    </tr>
+    <tr>
+      <td><%= politico.nome %></td>
+<!--      <td><%#= politico.sgpartido %></td>-->
+      <td><%= politico.despesas.first.valor_liquido %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,11 @@
+class CreatePoliticos < ActiveRecord::Migration[6.0]
+  def change
+    create_table :politicos do |t|
+      t.string :nome
+      t.string :sguf
+      t.string :sgpartido
+
+      t.timestamps
+    end
+  end
+end

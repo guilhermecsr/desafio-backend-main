@@ -1,0 +1,15 @@
+<% require 'pry' %>
+<table>
+  Politicos cadastrados:
+    <tr>
+      <th>Nome: </th>
+<!--      <th>Partido: </th>-->
+      <th>despesas: </th>
+    </tr>
+    <tr>
+      <td><%= @politico.nome %></td>
+<!--      <td><%#= @politico.sgpartido %></td>-->
+      <%# binding.pry %>
+      <td><%= @politico.despesas.count%></td>
+    </tr>
+</table>
