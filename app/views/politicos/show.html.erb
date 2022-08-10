@@ -2,16 +2,9 @@
 <table>
   <%= link_to 'Politicos', politicos_path %>
   <br>
-  <tr>
-    <th>Nome: </th>
-    <th>Partido: </th>
-    <th>despesas: </th>
-  </tr>
-  <tr>
-    <td><%= @politician.nome %></td>
-    <td><%= @politician.sgpartido %></td>
-    <td><%= @politician.despesas.count%></td>
-  </tr>
+
+  <h1><%= politician_photo(@presenter.politician) %> <%= @presenter.politician.nome %> (<%= @presenter.politician.sgpartido %>)</h1>
+
 </table>
 <br>
 <table border="1">
@@ -21,11 +14,11 @@
     <th>Valor: </th>
     <th>URL: </th>
   </tr>
-  <% @politician.despesas.each do |despesa| %>
+  <% @presenter.ordered_expenses.each do |despesa| %>
     <tr>
       <td><%= despesa.fornecedor %></td>
       <td><%= despesa.data_emissao %></td>
-      <td><%= despesa.valor_liquido %></td>
+      <td style="text-align:right;"><%= number_to_currency(despesa.valor_liquido, :unit => "R$") %></td>
       <td><%= link_to "Recibo", despesa.url_documento, target: :_blank %></td>
     </tr>
   <% end %>

@@ -1,15 +1,15 @@
-require 'pry'
-class PoliticoPresenter < SimpleDelegator
-  def initialize
+class PoliticoPresenter
+  def initialize(politico_id)
+    @politico_id = politico_id
   end
 
-  def ordered_by_total
-    array = []
+  attr_reader :politico_id
 
-    politicians = Politico.joins(:despesas).group('politicos.id').order('sum(despesas.valor_liquido) desc')
-    politicians.each do |politician|
-      array << politician
-    end
-    array
+  def ordered_expenses
+    politician.despesas.order(valor_liquido: :desc)
+  end
+
+  def politician
+    @politician ||= Politico.find(politico_id)
   end
 end

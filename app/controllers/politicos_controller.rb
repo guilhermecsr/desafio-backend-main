@@ -1,16 +1,9 @@
 class PoliticosController < ApplicationController
   def index
-    presenter = PoliticoPresenter.new
-    @politicians = presenter.ordered_by_total
+    @presenter = PoliticosPresenter.new
   end
 
   def show
-    @politician = Politico.find(params[:id])
-  end
-
-  private
-
-  def politico_params
-    params.require(:politico).permit(:nome, :sguf, :sgpartido)
+    @presenter = PoliticoPresenter.new(params[:id])
   end
 end
