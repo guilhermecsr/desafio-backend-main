@@ -1,9 +1,9 @@
 <% require 'pry' %>
 <table border="1">
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Voltar', root_path %>
   <br>
   Politicos cadastrados(RJ):
-  <% @politicos.each do |politico|%>
+  <% @politicians.each do |politician|%>
     <tr>
       <th>Foto: </th>
       <th>Nome: </th>
@@ -11,11 +11,11 @@
       <th>valor: </th>
     </tr>
     <tr>
-      <td><%= image_tag("http://www.camara.leg.br/internet/deputado/bandep/#{politico.id_cadastro}.jpg",
+      <td><%= image_tag("http://www.camara.leg.br/internet/deputado/bandep/#{politician.id_cadastro}.jpg",
                         style: 'height:auto; width:114px;') %></td>
-      <td><%= link_to "#{politico.nome}", politico_path(politico) %></td>
-      <td><%= politico.sgpartido %></td>
-      <td><%= number_to_currency(politico.despesas.sum(:valor_liquido), :unit => "R$") %></td>
+      <td><%= link_to "#{politician.nome}", politico_path(politician) %></td>
+      <td><%= politician.sgpartido %></td>
+      <td><%= number_to_currency(politician.despesas.sum(:valor_liquido), :unit => "R$") %></td>
     </tr>
   <% end %>
 </table>

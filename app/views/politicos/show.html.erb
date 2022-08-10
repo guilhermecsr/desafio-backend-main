@@ -8,9 +8,9 @@
     <th>despesas: </th>
   </tr>
   <tr>
-    <td><%= @politico.nome %></td>
-    <td><%= @politico.sgpartido %></td>
-    <td><%= @politico.despesas.count%></td>
+    <td><%= @politician.nome %></td>
+    <td><%= @politician.sgpartido %></td>
+    <td><%= @politician.despesas.count%></td>
   </tr>
 </table>
 <br>
@@ -21,7 +21,7 @@
     <th>Valor: </th>
     <th>URL: </th>
   </tr>
-  <% @politico.despesas.each do |despesa| %>
+  <% @politician.despesas.each do |despesa| %>
     <tr>
       <td><%= despesa.fornecedor %></td>
       <td><%= despesa.data_emissao %></td>

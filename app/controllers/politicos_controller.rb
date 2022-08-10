@@ -1,11 +1,11 @@
 class PoliticosController < ApplicationController
   def index
     presenter = PoliticoPresenter.new
-    @politicos = presenter.valor_despesa
+    @politicians = presenter.ordered_by_total
   end
 
   def show
-    @politico = Politico.find(params[:id])
+    @politician = Politico.find(params[:id])
   end
 
   private
