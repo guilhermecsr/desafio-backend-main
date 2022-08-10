@@ -1,6 +1,6 @@
 class PoliticosController < ApplicationController
   def index
-    presenter = PoliticoPresenter.new(Politico.all)
+    presenter = PoliticoPresenter.new
     @politicos = presenter.valor_despesa
   end
 

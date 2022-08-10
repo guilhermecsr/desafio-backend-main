@@ -1,15 +1,32 @@
 <% require 'pry' %>
 <table>
-  Politicos cadastrados:
+  <%= link_to 'Politicos', politicos_path %>
+  <br>
+  <tr>
+    <th>Nome: </th>
+    <th>Partido: </th>
+    <th>despesas: </th>
+  </tr>
+  <tr>
+    <td><%= @politico.nome %></td>
+    <td><%= @politico.sgpartido %></td>
+    <td><%= @politico.despesas.count%></td>
+  </tr>
+</table>
+<br>
+<table border="1">
+  <tr>
+    <th>Fornecedor: </th>
+    <th>Data: </th>
+    <th>Valor: </th>
+    <th>URL: </th>
+  </tr>
+  <% @politico.despesas.each do |despesa| %>
     <tr>
-      <th>Nome: </th>
-<!--      <th>Partido: </th>-->
-      <th>despesas: </th>
+      <td><%= despesa.fornecedor %></td>
+      <td><%= despesa.data_emissao %></td>
+      <td><%= despesa.valor_liquido %></td>
+      <td><%= link_to "Recibo", despesa.url_documento, target: :_blank %></td>
     </tr>
-    <tr>
-      <td><%= @politico.nome %></td>
-<!--      <td><%#= @politico.sgpartido %></td>-->
-      <%# binding.pry %>
-      <td><%= @politico.despesas.count%></td>
-    </tr>
+  <% end %>
 </table>
