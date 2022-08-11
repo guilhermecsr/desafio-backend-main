@@ -59,22 +59,22 @@ class CsvService
         politico = Politico.find_by(nome: key[0])
         values.each do |value|
           Despesa.create(valor_liquido: value[0],
-                         data_emissao: value[1],
-                         fornecedor: value[2],
-                         url_documento: value[3],
-                         politico_id: politico.id)
+                        data_emissao: value[1],
+                        fornecedor: value[2],
+                        url_documento: value[3],
+                        politico_id: politico.id)
         end
       else
         politico = Politico.create(nome: key[0],
-                                   id_cadastro: key[1],
-                                   sguf: key[2],
-                                   sgpartido: key[3])
+                                  id_cadastro: key[1],
+                                  sguf: key[2],
+                                  sgpartido: key[3])
         values.each do |value|
           Despesa.create(valor_liquido: value[0],
-                         data_emissao: value[1],
-                         fornecedor: value[2],
-                         url_documento: value[3],
-                         politico: politico)
+                        data_emissao: value[1],
+                        fornecedor: value[2],
+                        url_documento: value[3],
+                        politico: politico)
         end
 
       end
