@@ -1,12 +1,13 @@
-<% require 'pry' %>
 <table border="1">
   <%= link_to 'Voltar', root_path %>
   <br>
   <% if @presenter.politicians.size == 0 %>
     <p>Nenhum político cadastrado.</p>
+
     <%= link_to 'Cadastrar politicos', csv_index_path %>
   <% else %>
     <h3>Politicos cadastrados(RJ):</h3>
+
     <% @presenter.politicians.each do |politician|%>
       <tr>
         <th>Foto: </th>
