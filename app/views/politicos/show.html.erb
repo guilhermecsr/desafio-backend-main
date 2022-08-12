@@ -1,10 +1,8 @@
-<% require 'pry' %>
 <table>
   <%= link_to 'Politicos', politicos_path %>
   <br>
 
   <h1><%= politician_photo(@presenter.politician) %> <%= @presenter.politician.nome %> (<%= @presenter.politician.sgpartido %>)</h1>
-
 </table>
 <br>
 <table border="1">

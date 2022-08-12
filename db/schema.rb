@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_08_06_221037) do
 
   create_table "politicos", force: :cascade do |t|
     t.string "nome"
+    t.string "cpf"
     t.string "sguf"
     t.string "sgpartido"
     t.string "id_cadastro"
