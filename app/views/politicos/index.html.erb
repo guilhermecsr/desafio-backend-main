@@ -1,28 +1,34 @@
-<table class="table">
-  <thead class="thead-dark">
-  <%= link_to 'Voltar', root_path %>
-  <br>
-  <% if @records.size == 0 %>
-    <p>Nenhum político cadastrado.</p>
+<div class="container">
 
-    <%= link_to 'Cadastrar politicos', csv_index_path %>
-  <% else %>
-    <h3>Politicos cadastrados(RJ):</h3>
+  <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+    <a class="navbar-brand" href="/">Início</a>
 
-    <%== pagy_bootstrap_nav(@pagy) %>
-    <tr>
-      <th>Foto </th>
-      <th>Nome </th>
-      <th>Partido </th>
-      <th>valor </th>
-    </tr>
-    <% @records.each do |politician|%>
+    <a class="navbar-brand" href="/csv">CSV</a>
+  </nav>
+  <table class="table">
+    <thead class="thead-dark">
+    <% if @records.size == 0 %>
+      <p>Nenhum político cadastrado.</p>
+
+      <%= link_to 'Cadastrar politicos', csv_index_path %>
+    <% else %>
+      <h3>Politicos cadastrados(RJ):</h3>
+
+      <%== pagy_bootstrap_nav(@pagy) %>
       <tr>
-        <td><%= politician_photo(politician) %></td>
-        <td><%= link_to "#{politician.nome}", politico_path(politician) %></td>
-        <td><%= politician.sgpartido %></td>
-        <td><%= number_to_currency(@presenter.expenses[politician.id], :unit => "R$") %></td>
+        <th>Foto </th>
+        <th>Nome </th>
+        <th>Partido </th>
+        <th>Total </th>
       </tr>
+      <% @records.each do |politician|%>
+        <tr>
+          <td><%= politician_photo(politician) %></td>
+          <td><%= link_to "#{politician.nome}", politico_path(politician) %></td>
+          <td><%= politician.sgpartido %></td>
+          <td><%= number_to_currency(@presenter.expenses[politician.id], :unit => "R$") %></td>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
+    </table>
+</div>

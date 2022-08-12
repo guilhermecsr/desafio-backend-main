@@ -1,33 +1,37 @@
-<table>
-  <%= link_to 'Politicos', politicos_path %>
+<div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-blue">
+    <a class="navbar-brand" href="/">Início</a>
+
+    <a class="navbar-brand" href="/politicos">Politicos</a>
+  </nav>
+  <table>
+    <h1><%= politician_photo(@presenter.politician) %>
+      <%= @presenter.politician.nome %> (<%= @presenter.politician.sgpartido %>)</h1>
+
+    <h2>Maior despesa: <%= number_to_currency(@presenter.ordered_expenses.first.valor_liquido, :unit => "R$") %></h2>
+
+  </table>
 
   <br>
 
-  <h1><%= politician_photo(@presenter.politician) %>
-    <%= @presenter.politician.nome %> (<%= @presenter.politician.sgpartido %>)</h1>
-
-  <h2>Maior despesa: <%= number_to_currency(@presenter.ordered_expenses.first.valor_liquido, :unit => "R$") %></h2>
-
-</table>
-
-<br>
-
-<%== pagy_bootstrap_nav(@pagy) %>
-<table class="table">
-  <thead class="thead-dark">
+  <%== pagy_bootstrap_nav(@pagy) %>
+  <table class="table">
+    <thead class="thead-dark">
     <tr>
       <th scope="col">Fornecedor: </th>
       <th scope="col">Data: </th>
       <th scope="col">Valor: </th>
       <th scope="col">URL: </th>
     </tr>
-  </thead>
-  <% @records.each do |despesa| %>
-    <tr>
-      <td><%= despesa.fornecedor %></td>
-      <td><%= despesa.data_emissao %></td>
-      <td style="text-align:right;"><%= number_to_currency(despesa.valor_liquido, :unit => "R$") %></td>
-      <td><%= link_to "Recibo", despesa.url_documento, target: :_blank %></td>
-    </tr>
-  <% end %>
-</table>
+    </thead>
+    <% @records.each do |despesa| %>
+      <tr>
+        <td><%= despesa.fornecedor %></td>
+        <td><%= despesa.data_emissao %></td>
+        <td style="text-align:right;"><%= number_to_currency(despesa.valor_liquido, :unit => "R$") %></td>
+        <td><%= link_to "Recibo", despesa.url_documento, target: :_blank %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
