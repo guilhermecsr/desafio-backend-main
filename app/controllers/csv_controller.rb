@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 class CsvController < ApplicationController
   def create
     file_path = params[:csv].tempfile.path

@@ -1,10 +1,21 @@
-<%= link_to 'Voltar', root_path %>
-<br>
-index csv
+<div class="container">
+  <%= link_to 'Voltar', root_path %>
+  <div class="row">
 
-<%= form_tag({:action => :create}, :multipart => true) do %>
-  <%= file_field_tag 'csv' %>
-  <%= submit_tag "Submit", class: "btn btn-primary", id: "submit-create"%>
-<% end %>
+    <div class="col">
+    </div>
 
-<p>Você será redirecionado em breve.<p/>
+    <div class="col-6">
+      <p>Carregar um CSV: </p>
+
+      <%= form_tag({:action => :create}, :multipart => true) do %>
+        <%= file_field_tag 'csv' %>
+        <%= submit_tag "Submit", class: "btn btn-primary", id: "submit-create"%>
+      <% end %>
+
+      <p>Após o carregamento você será redirecionado.<p/>
+    </div>
+
+    <div class="col"></div>
+  </div>
+</div>

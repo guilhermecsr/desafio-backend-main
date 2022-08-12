@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 class CsvService
   def initialize(temp_file)
     @temp_file = temp_file

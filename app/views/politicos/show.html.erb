@@ -12,14 +12,16 @@
 
 <br>
 
-<%== pagy_nav(@pagy) %>
-<table border="1">
-  <tr>
-    <th>Fornecedor: </th>
-    <th>Data: </th>
-    <th>Valor: </th>
-    <th>URL: </th>
-  </tr>
+<%== pagy_bootstrap_nav(@pagy) %>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Fornecedor: </th>
+      <th scope="col">Data: </th>
+      <th scope="col">Valor: </th>
+      <th scope="col">URL: </th>
+    </tr>
+  </thead>
   <% @records.each do |despesa| %>
     <tr>
       <td><%= despesa.fornecedor %></td>

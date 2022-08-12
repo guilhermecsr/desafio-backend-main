@@ -1,5 +1,5 @@
-<div>
-<table border="1">
+<table class="table">
+  <thead class="thead-dark">
   <%= link_to 'Voltar', root_path %>
   <br>
   <% if @records.size == 0 %>
@@ -9,7 +9,7 @@
   <% else %>
     <h3>Politicos cadastrados(RJ):</h3>
 
-    <%== pagy_nav(@pagy) %>
+    <%== pagy_bootstrap_nav(@pagy) %>
     <tr>
       <th>Foto </th>
       <th>Nome </th>
@@ -26,4 +26,3 @@
     <% end %>
   <% end %>
 </table>
-</div>

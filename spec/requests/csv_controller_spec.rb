@@ -11,8 +11,5 @@ RSpec.describe CsvController, type: :request do
     before { post csv_index_path, params: params }
 
     it { expect(response).to have_http_status(302) }
-    # it {
-    #   # binding.pry
-    #   expect(subject).to change(Politico.all, :count).by(1) }
   end
 end
