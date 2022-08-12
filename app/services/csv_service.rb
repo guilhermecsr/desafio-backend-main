@@ -13,71 +13,37 @@ class CsvService
   attr_reader :temp_file
 
   def data
-    @data ||= CSV.parse(File.read(temp_file, encoding: 'bom|utf-8'), col_sep: ";", quote_char: "\x00", headers: true)
+    @data ||= CSV.parse(File.read(temp_file, encoding: 'bom|utf-8'), col_sep: ";", headers: true)
   end
 
   def create_from_upload
-    hash = {}
-
-    data.each do |row|
-      if row[5] == "\"RJ\""
-        despesa = monta_despesa(row)
-        politico = monta_politico(row)
-        monta_hash(politico, despesa, hash)
-      end
-    end
-    cria_objetos(hash)
-  end
-
-  def monta_despesa(row)
-    valor_liquido = row[19].remove("\"").to_f
-    data_emissao = row[16].remove("\"")
-    fornecedor = row[12].remove("\"")
-    url = row[-1].remove("\"")
-    [valor_liquido, data_emissao, fornecedor, url]
-  end
-
-  def monta_politico(row)
-    nome = row[0].remove("\"")
-    id = row[2].remove("\"")
-    uf = row[5].remove("\"")
-    partido = row[6].remove("\"")
-    [nome, id, uf, partido]
-  end
-
-  def monta_hash(politico, despesa, hash)
-    if hash.keys.include? politico
-      hash[politico].push despesa
-    else
-      hash[politico] = [despesa]
+    filtered_grouped.each do |cpf, expenses |
+      politician = Politico.find_or_create_by(politician_params(expenses))
+      array = expense_params(politician, expenses)
+      Despesa.create(array)
     end
   end
 
-  def cria_objetos(hash)
-    hash.each do |key, values|
-      if Politico.find_by(nome: key[0]).present?
-        politico = Politico.find_by(nome: key[0])
-        values.each do |value|
-          Despesa.create(valor_liquido: value[0],
-                        data_emissao: value[1],
-                        fornecedor: value[2],
-                        url_documento: value[3],
-                        politico_id: politico.id)
-        end
-      else
-        politico = Politico.create(nome: key[0],
-                                  id_cadastro: key[1],
-                                  sguf: key[2],
-                                  sgpartido: key[3])
-        values.each do |value|
-          Despesa.create(valor_liquido: value[0],
-                        data_emissao: value[1],
-                        fornecedor: value[2],
-                        url_documento: value[3],
-                        politico: politico)
-        end
+  def filtered_grouped
+    filtered_data = data.select { |row| row["sgUF"] == "RJ" }
+    filtered_data.group_by{|h| h["cpf"]}
+  end
 
-      end
+  def politician_params(expenses)
+    { nome: expenses.first["txNomeParlamentar"],
+      id_cadastro: expenses.first["ideCadastro"],
+      cpf: expenses.first["cpf"],
+      sguf: expenses.first["sgUF"],
+      sgpartido: expenses.first["sgPartido"] }
+  end
+
+  def expense_params(politician, expenses)
+    expenses.map do|expense|
+      { valor_liquido: expense["vlrLiquido"],
+        data_emissao: expense["datEmissao"],
+        fornecedor: expense["txtFornecedor"],
+        url_documento: expense["urlDocumento"],
+        politico_id: politician.id }
     end
   end
 end

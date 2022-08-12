@@ -19,14 +19,26 @@ RSpec.describe PoliticosController, type: :request do
   end
 
   describe "GET/show" do
-    before(:each) do
-      get politico_path(politician)
+    context "valid params" do
+      before(:each) do
+        get politico_path(politician)
+      end
+
+      it { expect(response).to have_http_status(200) }
+
+      it do
+        expect(response.body).to include("#{politician.nome} (#{politician.sgpartido})")
+      end
     end
 
-    it { expect(response).to have_http_status(200) }
+    context "invalid params" do
+      before(:each) do
+        get politico_path(0)
+      end
 
-    it do
-      expect(response.body).to include("#{politician.nome} (#{politician.sgpartido})")
+      it { expect(response).to have_http_status(302) }
+
+      it { expect(flash[:error]).to match(/Erro ao encontrar Politico. Você foi redirecionado!/) }
     end
   end
 end
