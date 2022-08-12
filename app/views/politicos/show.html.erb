@@ -12,6 +12,7 @@
 
 <br>
 
+<%== pagy_nav(@pagy) %>
 <table border="1">
   <tr>
     <th>Fornecedor: </th>
@@ -19,7 +20,7 @@
     <th>Valor: </th>
     <th>URL: </th>
   </tr>
-  <% @presenter.ordered_expenses.each do |despesa| %>
+  <% @records.each do |despesa| %>
     <tr>
       <td><%= despesa.fornecedor %></td>
       <td><%= despesa.data_emissao %></td>

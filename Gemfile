@@ -21,6 +21,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use csv for read seed file
 gem 'csv'
+
+gem 'bootstrap', '~> 5.2.0'
+
+gem 'jquery-rails'
+
+gem 'pagy'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

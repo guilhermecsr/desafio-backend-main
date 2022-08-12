@@ -1,20 +1,22 @@
+<div>
 <table border="1">
   <%= link_to 'Voltar', root_path %>
   <br>
-  <% if @presenter.politicians.size == 0 %>
+  <% if @records.size == 0 %>
     <p>Nenhum político cadastrado.</p>
 
     <%= link_to 'Cadastrar politicos', csv_index_path %>
   <% else %>
     <h3>Politicos cadastrados(RJ):</h3>
 
-    <% @presenter.politicians.each do |politician|%>
-      <tr>
-        <th>Foto: </th>
-        <th>Nome: </th>
-        <th>Partido: </th>
-        <th>valor: </th>
-      </tr>
+    <%== pagy_nav(@pagy) %>
+    <tr>
+      <th>Foto </th>
+      <th>Nome </th>
+      <th>Partido </th>
+      <th>valor </th>
+    </tr>
+    <% @records.each do |politician|%>
       <tr>
         <td><%= politician_photo(politician) %></td>
         <td><%= link_to "#{politician.nome}", politico_path(politician) %></td>
@@ -24,3 +26,4 @@
     <% end %>
   <% end %>
 </table>
+</div>
