@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SumExpensesQuery
   def initialize(politicians = Politico.all)
     @politicians = politicians

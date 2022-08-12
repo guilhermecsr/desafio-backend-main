@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Despesa, type: :model do
@@ -6,7 +8,7 @@ RSpec.describe Despesa, type: :model do
   subject { expense }
 
   describe 'Associations' do
-    it {  is_expected.to belong_to(:politico) }
+    it { is_expected.to belong_to(:politico) }
   end
 
   describe 'Validations' do

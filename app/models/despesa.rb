@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Despesa < ApplicationRecord
   belongs_to :politico
 

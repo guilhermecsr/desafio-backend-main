@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'pry'
 class PoliticosPresenter
-  def initialize
-  end
+  def initialize; end
 
   def politicians
     @politicians ||= PoliticiansByExpensesQuery.new.call

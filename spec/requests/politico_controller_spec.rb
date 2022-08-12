@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PoliticosController, type: :request do
   let(:politician) { FactoryBot.create(:politico) }
   let!(:expense) { FactoryBot.create(:despesa, politico: politician) }
 
-  describe "GET/index" do
+  describe 'GET/index' do
     before(:each) do
       get politicos_path
     end
@@ -18,8 +20,8 @@ RSpec.describe PoliticosController, type: :request do
     end
   end
 
-  describe "GET/show" do
-    context "valid params" do
+  describe 'GET/show' do
+    context 'valid params' do
       before(:each) do
         get politico_path(politician)
       end
@@ -31,7 +33,7 @@ RSpec.describe PoliticosController, type: :request do
       end
     end
 
-    context "invalid params" do
+    context 'invalid params' do
       before(:each) do
         get politico_path(0)
       end

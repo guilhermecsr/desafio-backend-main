@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PoliticoPresenter
   def initialize(politico_id)
     @politico_id = politico_id

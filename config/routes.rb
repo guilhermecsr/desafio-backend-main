@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :csv, only: [:index, :create]
-  resources :politicos, only: [:index, :show]
+  resources :csv, only: %i[index create]
+  resources :politicos, only: %i[index show]
 end

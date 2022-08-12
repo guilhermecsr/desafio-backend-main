@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PoliticosController < ApplicationController
   def index
     @presenter = PoliticosPresenter.new

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Politico < ApplicationRecord
   has_many :despesas
 
