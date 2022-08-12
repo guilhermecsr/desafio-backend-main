@@ -7,10 +7,8 @@
   </nav>
   <table class="table">
     <thead class="thead-dark">
-    <% if @records.size == 0 %>
+    <% if @presenter.politicians.size == 0 %>,
       <p>Nenhum político cadastrado.</p>
-
-      <%= link_to 'Cadastrar politicos', csv_index_path %>
     <% else %>
       <h3>Politicos cadastrados(RJ):</h3>
 

@@ -21,7 +21,9 @@ class CsvService
     filtered_grouped.each do |_cpf, expenses|
       politician = Politico.find_or_create_by(politician_params(expenses))
       array = expense_params(politician, expenses)
-      Despesa.create(array)
+      array.each do |element|
+        Despesa.find_or_create_by(element)
+      end
     end
   end
 
@@ -41,6 +43,7 @@ class CsvService
   def expense_params(politician, expenses)
     expenses.map do |expense|
       { valor_liquido: expense['vlrLiquido'],
+        numero_doc: expense['txtNumero'],
         data_emissao: expense['datEmissao'],
         fornecedor: expense['txtFornecedor'],
         url_documento: expense['urlDocumento'],
