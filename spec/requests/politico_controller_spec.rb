@@ -7,13 +7,10 @@ RSpec.describe PoliticosController, type: :request do
   let!(:expense) { FactoryBot.create(:despesa, politico: politician) }
 
   describe 'GET/index' do
-    before(:each) do
-      get politicos_path
-    end
+    before { get politicos_path }
 
     it { expect(response).to have_http_status(200) }
-
-    it do
+    it 'returns politician attributes' do
       expect(response.body).to match(politician.nome)
       expect(response.body).to match(politician.sguf)
       expect(response.body).to match(politician.sgpartido)
@@ -21,25 +18,17 @@ RSpec.describe PoliticosController, type: :request do
   end
 
   describe 'GET/show' do
-    context 'valid params' do
-      before(:each) do
-        get politico_path(politician)
-      end
+    context 'when params is valid' do
+      before { get politico_path(politician) }
 
       it { expect(response).to have_http_status(200) }
-
-      it do
-        expect(response.body).to include("#{politician.nome} (#{politician.sgpartido})")
-      end
+      it { expect(response.body).to include("#{politician.nome} (#{politician.sgpartido})") }
     end
 
-    context 'invalid params' do
-      before(:each) do
-        get politico_path(0)
-      end
+    context 'when params is invalid' do
+      before { get politico_path(0) }
 
       it { expect(response).to have_http_status(302) }
-
       it { expect(flash[:error]).to match(/Erro ao encontrar Politico. Você foi redirecionado!/) }
     end
   end
