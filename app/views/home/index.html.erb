@@ -1,8 +1,34 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-blue">
-    <a class="navbar-brand" href="/csv">CSV</a>
+  <div style="padding: 20px;">
+    <h3>Desafio back-end Agenda Edu</h3>
 
-    <a class="navbar-brand" href="/politicos">Politicos</a>
-  </nav>
-  <h3>Desafio back-end Agenda Edu</h3>
+    <h5> O que você deseja fazer?</h5>
+  </div>
+
+  <div class="card-group">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Listagem de políticos</h5>
+        <p class="card-text">A listagem de políticos fornece informações dos políticos e suas despesas.</p>
+      </div>
+      <div class="card-footer">
+        <div style="text-align: right;">
+          <a class="btn btn-outline-primary btn-lg" href="/politicos">Listar Politicos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Carregar CSV</h5>
+        <p class="card-text">Essa feature permite carregar um CSV com os dados dos políticos que serão salvos no banco de dados".</p>
+      </div>
+      <div class="card-footer">
+        <div style="text-align: right;">
+          <a class="btn btn-outline-primary btn-lg" href="/csv">Carregar CSV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

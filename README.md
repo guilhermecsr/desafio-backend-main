@@ -1,3 +1,33 @@
+# How to run
+
+
+To run in http://localhost:3000/
+
+``rails s``
+
+
+### Tests
+
+Tests with https://rspec.info/
+
+Run tests with the following command, coverage can be found inside '../coverage'
+
+
+``
+RAILS_ENV=test rails db:create
+``
+
+``
+rails db:test:prepare
+``
+
+``
+rspec
+``
+
+
+___________________
+
 # Ranking dos gastos dos Deputados
 
 Estamos muito felizes que você tenha chegado nessa etapa do nosso processo seletivo, para essa fase, desejamos que você resolva um desafio. Nosso desafio consiste em analisar alguns dados disponibilizados pelo Câmara dos Deputados relativos aos gastos dos parlamentares. A ideia é descobrir quem, do seu estado, está gastando mais e exibir de forma resumida esses principais gastos.

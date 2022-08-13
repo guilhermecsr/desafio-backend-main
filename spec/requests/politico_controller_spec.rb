@@ -29,7 +29,7 @@ RSpec.describe PoliticosController, type: :request do
       before { get politico_path(0) }
 
       it { expect(response).to have_http_status(302) }
-      it { expect(flash[:error]).to match(/Erro ao encontrar Politico. Você foi redirecionado!/) }
+      it { expect(flash[:error]).to match("Erro ao encontrar Politico com ID = 0. Você foi redirecionado!") }
     end
   end
 end

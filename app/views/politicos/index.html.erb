@@ -1,18 +1,13 @@
 <div class="container">
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-blue">
-    <a class="navbar-brand" href="/">Início</a>
-
-    <a class="navbar-brand" href="/csv">CSV</a>
-  </nav>
   <table class="table">
     <thead class="thead-dark">
     <% if @presenter.politicians.size == 0 %>,
       <p>Nenhum político cadastrado.</p>
     <% else %>
-      <h3>Politicos cadastrados(RJ):</h3>
+      <h3>Politicos cadastrados (RJ)</h3>
 
-      <%== pagy_bootstrap_nav(@pagy) %>
+        <%== pagy_bootstrap_nav(@pagy) %>
+
       <tr>
         <th>Foto </th>
         <th>Nome </th>
@@ -21,7 +16,7 @@
       </tr>
       <% @records.each do |politician|%>
         <tr>
-          <td><%= politician_photo(politician) %></td>
+          <td><%= link_to politician_photo(politician), politico_path(politician) %></td>
           <td><%= link_to "#{politician.nome}", politico_path(politician) %></td>
           <td><%= politician.sgpartido %></td>
           <td><%= number_to_currency(@presenter.expenses[politician.id], :unit => "R$") %></td>
@@ -29,4 +24,10 @@
       <% end %>
     <% end %>
     </table>
+
+    <%== pagy_bootstrap_nav(@pagy) %>
+
 </div>
+
+
+

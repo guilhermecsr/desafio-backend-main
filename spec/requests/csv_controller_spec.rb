@@ -16,6 +16,7 @@ RSpec.describe CsvController, type: :request do
       before { post csv_index_path, params: params }
 
       it { expect(response).to have_http_status(302) }
-      it { expect(flash[:error]).to match(/Não foi possível encontrar um arquivo./) }
-    end end
+      it { expect(flash[:alert]).to match(/Atenção! Não foi possível carregar um arquivo./) }
+    end
+  end
 end

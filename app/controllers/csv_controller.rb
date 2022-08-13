@@ -2,13 +2,19 @@
 
 class CsvController < ApplicationController
   def create
-    if params[:csv]
-      file_path = params[:csv].tempfile.path
-      CsvService.new(file_path).call
+    if csv_file
+      CsvService.new(csv_file).call
+      flash[:notice] = 'Sucesso! Arquivo carregado. Políticos atualizados!'
       redirect_to :politicos
     else
-      flash[:error] = 'Não foi possível encontrar um arquivo.'
+      flash[:alert] = 'Atenção! Não foi possível carregar um arquivo.'
       redirect_to action: :create
     end
+  end
+  
+  private
+  
+  def csv_file
+    @csv_file ||= params[:csv].tempfile.path if params[:csv] && params[:csv].content_type == 'text/csv'
   end
 end

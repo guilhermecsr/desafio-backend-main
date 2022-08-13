@@ -1,25 +1,42 @@
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-blue">
-    <a class="navbar-brand" href="/">Início</a>
-
-    <a class="navbar-brand" href="/politicos">Politicos</a>
-  </nav>
   <div class="row">
 
-    <div class="col">
-    </div>
+    <div class="col-7">
+    <div class="card">
+      <div class="card-header">
+      Carregar um arquivo CSV de despesas dos políticos
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Selecione um arquivo apenas no formato CSV</h5>
 
-    <div class="col-6">
-      <p>Carregar um CSV: </p>
-
+        <p class="card-text">
       <%= form_tag({:action => :create}, :multipart => true) do %>
-        <%= file_field_tag 'csv' %>
+        <%= file_field_tag :csv, accept: 'text/csv' %>
         <%= submit_tag "Submit", class: "btn btn-primary", id: "submit-create"%>
       <% end %>
-
-      <p>Após o carregamento você será redirecionado.<p/>
+        </p>
+      </div>
+        <div class="card-footer text-muted">
+          Após o carregamento você será redirecionado.
+        </div>
+    </div>
     </div>
 
-    <div class="col"></div>
+    <div class="col-5">
+
+      <div class="card">
+        <div class="card-header">
+          Instruções
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            O arquivo deve conter o sequinte formato de header
+          </p>
+          <div class="card bg-light mb-3">
+            <span>txNomeParlamentar;cpf;ideCadastro;sgUF;sgPartido;txtFornecedor;txtNumero;datEmissao;vlrLiquido;urlDocumento</span>
+          </div>
+             </div>
+      </div>
+    </div>
   </div>
 </div>
